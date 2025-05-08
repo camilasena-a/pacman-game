@@ -9,13 +9,95 @@
 <body>
   <div id="game-container">
     <canvas id="canvas" width="420" height="520"></canvas>
+    <div id="start-modal">
+      <div id="modal-content">
+          <img src="assets/logo.png" class="logo-img">
+          <button id="start-button">PLAY</button>
+      </div>
+    </div>
     <div style="display:none;">
         <img id="animation" src="assets/animations.gif" width="140" height="20">
         <img id="ghosts" src="assets/ghost.png" width="140" height="20">
     </div>
+    <div id="gameover-modal" class="hidden">
+      <div id="gameover-content">
+          <div class="gameover-text">Game Over</div>
+          <button id="restart-button">Restart</button>
+      </div>
+  </div>
+  <div id="victory-modal" class="hidden">
+      <div id="victory-content">
+          <div class="victory-text">You Won!</div>
+          <div class="score-text">Score: <span id="final-score">0</span></div>
+          <button id="victory-restart-button">Restart</button>
+      </div>
+  </div>
   </div>
   <script src="js/ghost.js"></script>
   <script src="js/pacman.js"></script>
   <script src="js/game.js"></script>
+  <script>
+    // Pause the game initi ally
+    window.gameIsPaused = true;
+    
+    document.getElementById('start-button').addEventListener('click', function() {
+        // Hide the modal
+        document.getElementById('start-modal').classList.add('hidden');
+        
+        // Start the game
+        window.gameIsPaused = false;
+    });
+    
+    document.getElementById('restart-button').addEventListener('click', function() {
+        // Hide the game over modal
+        document.getElementById('gameover-modal').classList.add('hidden');
+        
+        // Remove the red border
+        document.getElementById('canvas').classList.remove('life-lost');
+        
+        // Restart the game completely
+        lives = 3;
+        score = 0;
+        
+        // Reset the map (restore the eaten balls)
+        for (let i = 0; i < map.length; i++) {
+            for (let j = 0; j < map[0].length; j++) {
+                if (map[i][j] == 3) {
+                    map[i][j] = 2; // Transform empty cells back to balls
+                }
+            }
+        }
+        
+        // Restart pacman and ghosts
+        restartPacmanAndGhosts();
+        
+        // Resume the game
+        window.gameIsPaused = false;
+    });
+    
+    document.getElementById('victory-restart-button').addEventListener('click', function() {
+        // Hide the victory modal
+        document.getElementById('victory-modal').classList.add('hidden');
+        
+        // Restart the game completely
+        lives = 3;
+        score = 0;
+        
+        // Reset the map (restore the eaten balls)
+        for (let i = 0; i < map.length; i++) {
+            for (let j = 0; j < map[0].length; j++) {
+                if (map[i][j] == 3) {
+                    map[i][j] = 2; // Transform empty cells back to balls
+                }
+            }
+        }
+        
+        // Restart pacman and ghosts
+        restartPacmanAndGhosts();
+        
+        // Resume the game
+        window.gameIsPaused = false;
+    });
+</script>
 </body>
 </html>
