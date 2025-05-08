@@ -17,7 +17,7 @@ This is a classic Pacman game developed with vanilla JavaScript, HTML5, and CSS3
 
 1. Clone the repository:
    ```
-   git clone https://github.com/camilasena/pacman-game.git
+   git clone https://github.com/camilasena-a/pacman-game.git
    ```
 2. Open the `index.html` file in your browser
 3. Click "PLAY" to start the game
