@@ -15,6 +15,14 @@ This is a classic Pacman game developed with vanilla JavaScript, HTML5, and CSS3
 
 ## 🚀 How to Play
 
+### Option 1: Play Online
+
+1. Access the game directly via link: [Pacman Game](https://camilasena-a.github.io/pacman-game/)
+2. Click "PLAY" to start the game
+3. Use the arrow keys (↑, ↓, ←, →) or (W,S,A,D) to control Pacman
+
+### Option 2: Run Locally
+
 1. Clone the repository:
    ```
    git clone https://github.com/camilasena-a/pacman-game.git
