@@ -13,7 +13,7 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 let lives = 3;
-let ghostCount = 4;
+let ghostCount = 8;
 let ghostImageLocations = [
     { x: 0, y: 0 },
     { x: 176, y: 0 },
@@ -276,18 +276,23 @@ let drawWalls = () => {
 
 let createGhosts = () => {
     ghosts = [];
-    for (let i = 0; i < ghostCount * 2; i++) {
+    
+    // Better distribute the ghosts so they can be applied in different positions
+    const positionsX = [1, 9, 15, 7, 10, 18, 17, 17];
+    const positionsY = [20, 17, 11, 4, 10, 19, 6, 21];
+    
+    for (let i = 0; i < ghostCount; i++) {
         let newGhost = new Ghost(
-            9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
-            10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+            positionsX[i] * oneBlockSize,
+            positionsY[i] * oneBlockSize,
             oneBlockSize,
             oneBlockSize,
-            pacman.speed / 2,
+            (oneBlockSize / 16),
             ghostImageLocations[i % 4].x,
             ghostImageLocations[i % 4].y,
             124,
             116,
-            6 + i
+            10 + i
         );
         ghosts.push(newGhost);
     }
