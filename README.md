@@ -1,6 +1,6 @@
 # 🎮 Pacman Game
 
-![Pacman Logo](assets/logo.png)
+![Pacman Logo](assets/preview.PNG)
 
 ## 📝 Description
 
